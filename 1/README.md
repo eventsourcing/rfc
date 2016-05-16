@@ -195,7 +195,7 @@ Optional is a parametrized type and can take any other type as a parameter. It, 
 |----------------|--------------------------|---------------------------------|
 | 0              |  1                       | 0, if the value is not present, 1 otherwise |
 
-
+Default value: value not present
 
 ### 1.15. Enum
 
