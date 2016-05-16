@@ -240,13 +240,17 @@ It is RECOMMENDED that a human readable, latin1 encoded name is specified for ty
 
 Entity is a data type that consists of its own name and number of typed and named properties. Typically, this would be a a class or a record.
 
+All entity's properties MUST be sorted lexicographically. This enforces the following:
+
+1. Actual entity deserialization happens without the knowledge of order of supplied properties and always follows the same order across implementations, allowing to avoid supplying property sequence number or type information.
+1. Fingerprints are always the same regardless of the order of supplied properties, producing a consistent versioning artifact (see 3.1.)
+
 ### 3.1. Fingerprint
 
 Entity layout fingerprint is formed by following the following procedure:
 
 1. Create a hasher (using *hashing algorithm* as defined in 4.1.)
 1. Update the hasher with the type name, serialized as UTF-8.
-1. Sort all entity's properties lexicographically.
 1. For every property,
    1. update the hasher with the property name, serialized as UTF-8.
    1. update the hasher with the property type's fingerprint.
