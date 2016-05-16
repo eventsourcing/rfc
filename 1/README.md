@@ -109,7 +109,7 @@ Default value: value not present
 Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`). The ordinal values MUST start with 0
 and form a consecutive sequence.
 
-Default value: smallest ordinal value.
+Default value: smallest ordinal value (0).
 
 ## 2. Fingerprinting
 
