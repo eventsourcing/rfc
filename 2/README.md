@@ -22,7 +22,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ## 0. Goals
 
 * To reduce the bandwidth and storage requirements for Eventsourcing entities
-* To be compatible with [RFC1/ELF](../2/README.md)
+* To be compatible with [RFC1/ELF](../1/README.md)
 
 ## 1. Data Types
 
