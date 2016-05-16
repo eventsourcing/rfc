@@ -1,7 +1,8 @@
-# RFC 1/LAYOUT
+# RFC 1/ELF
 
-Eventsourcing Layout is a data storage and exchange serialization used by
-compatible (mutually intelligible) implementations.
+Entity Layout Framework is a lightweight protocol for defining structured data
+types, intended to be used across different implementations of Eventsourcing
+and other software.
 
 * State: raw
 * Editor: Yurii Rashkovskii <yrashk@gmail.com>
@@ -22,7 +23,6 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## 0. Goals
 
-* To reduce the bandwidth and storage requirements for Eventsourcing entities
 * To eliminate a class of errors related to mismanaged entity structure versioning
 
 ## 1. Data Types
@@ -34,45 +34,19 @@ every implementation that aims to conform to this specification.
 No data type supports `null` values. An implementation MAY coerce null values
 to suggested *default values*.
 
-All standard types use big endian byte order, unless noted otherwise.
-
 ### 1.1. Boolean
-
-Boolean serialization is always of a constant size (1 byte).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  1             | 0 if false, 1 if true      |
 
 Default value: `false`
 
 ### 1.2. Short
 
-Short serialization is always of a constant size (2 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  2             | short value                |
-
 Default value: `0`
 
 ### 1.3. Integer
 
-Integer serialization is always of a constant size (4 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  4             | integer value              |
-
 Default value: `0`
 
 ### 1.4. Long
-
-Long serialization is always of a constant size (8 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  8             | long value                 |
 
 Default value: `0`
 
@@ -82,45 +56,17 @@ BigDecimal is an arbitrary-precision signed decimal numbers. It consists of an a
 If zero or positive, the scale is the number of digits to the right of the decimal point. If negative, the unscaled value of the number is multiplied by ten to the power of the negation of the scale. The value of the number represented is therefore `(unscaledValue * 10^-scale)`. This definition
 mirrors the definition of Java's BigDecimal.
 
-BigDecimal serialization is of a variable size.
-
-| Offset (bytes) | Length (bytes) | Value                                |
-|----------------|----------------|--------------------------------------|
-| 0              |  4             | *len* = length of the unscaled value |
-| 4              |  4             | scale                                |
-| 8              |  *len*         | unscaled value                       |
-
-The unscaled value is the The unscaled will contain the minimum number of bytes required to represent the value, including at least one sign bit.
-
 Default value: `0`
 
 ### 1.6. Float
-
-Float serialization is always of a constant size (4 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  4             | float value                |
 
 Default value: `0.0`
 
 ### 1.7. Double
 
-Double serialization is always of a constant size (8 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  8             | double value               |
-
 Default value: `0.0`
 
 ### 1.8. Byte
-
-Byte serialization is always of a constant size (1 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  1             | byte value                 |
 
 Default value: `0`
 
@@ -128,60 +74,25 @@ Default value: `0`
 
 ByteArray is an array of bytes.
 
-ByteArray serialization is of a variable size.
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  4             | *len* = number of bytes    |
-| 4              |  *len*         | bytes                      |
-
 Default value: empty array.
 
 ### 1.10. Character
 
-The serialization format is based on the original Unicode specification, which defined characters as fixed-width 16-bit entities. Even though it is an outdated
-representation superseded by newer Unicode standards, this format is kept
-in the sake of simplifying usage of languages that still use this representation.
-
-Character serialization is always of a constant size (2 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  2             | character value            |
-
-Default value: `0x0000`
+Default value: `0x0000` (16-bit entity)
 
 ### 1.11. String
 
-Character serialization is of variable size.
-
-| Offset (bytes) | Length (bytes) | Value                        |
-|----------------|----------------|------------------------------|
-| 0              |  4             | *len* = string size in bytes |
-| 4              |  *len*         | UTF-8 encoded string         |
+UTF-8 string.
 
 Default value: empty string
 
 ### 1.12. UUID
-
-UUID serialization is always of a constant size (16 bytes)
-
-| Offset (bytes) | Length (bytes) | Value                        |
-|----------------|----------------|------------------------------|
-| 0              |  8             | most significant bytes       |
-| 8              |  8             | least significant bytes      |
 
 Default value: `00000000-0000-0000-0000-000000000000`
 
 ### 1.13. List
 
 List is a parametrized type and can take any other type as a parameter.
-It, therefore, delegates to a underlying type's serialization format.
-
-| Offset (bytes) | Length (bytes)           | Value                           |
-|----------------|--------------------------|---------------------------------|
-| 0              |  4                       | *len* = number of list elements |
-| 4              |  *sum(len(serialize_N))* | serialize_N(T) byte array       |
 
 Default value: empty list
 
@@ -189,11 +100,7 @@ Default value: empty list
 
 Optional is a type that signifies a value that might be either present or not.
 
-Optional is a parametrized type and can take any other type as a parameter. It, therefore, delegates to a underlying type's serialization format.
-
-| Offset (bytes) | Length (bytes)           | Value                           |
-|----------------|--------------------------|---------------------------------|
-| 0              |  1                       | 0, if the value is not present, 1 otherwise |
+Optional is a parametrized type and can take any other type as a parameter.
 
 Default value: value not present
 
@@ -201,13 +108,7 @@ Default value: value not present
 
 Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`)
 
-Enum serialization is always of a constant size (4 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  4             | ordinal (integer) value    |
-
-Default value: `0`
+Default value: smallest ordinal value.
 
 ## 2. Fingerprinting
 
