@@ -1,4 +1,4 @@
-# RFC 0/LAYOUT
+# RFC 1/LAYOUT
 
 Eventsourcing Layout is a data storage and exchange serialization used by
 compatible (mutually intelligible) implementations.
