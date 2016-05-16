@@ -106,7 +106,8 @@ Default value: value not present
 
 ### 1.15. Enum
 
-Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`)
+Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`). The ordinal values MUST start with 0
+and form a consecutive sequence.
 
 Default value: smallest ordinal value.
 
