@@ -76,27 +76,23 @@ ByteArray is an array of bytes.
 
 Default value: empty array.
 
-### 1.10. Character
-
-Default value: `0x0000` (16-bit entity)
-
-### 1.11. String
+### 1.10. String
 
 UTF-8 string.
 
 Default value: empty string
 
-### 1.12. UUID
+### 1.11. UUID
 
 Default value: `00000000-0000-0000-0000-000000000000`
 
-### 1.13. List
+### 1.12. List
 
 List is a parametrized type and can take any other type as a parameter.
 
 Default value: empty list
 
-### 1.14. Optional
+### 1.13. Optional
 
 Optional is a type that signifies a value that might be either present or not.
 
@@ -104,7 +100,7 @@ Optional is a parametrized type and can take any other type as a parameter.
 
 Default value: value not present
 
-### 1.15. Enum
+### 1.14. Enum
 
 Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`). The ordinal values MUST start with 0
 and form a consecutive sequence.
@@ -131,7 +127,6 @@ It is RECOMMENDED that a human readable, latin1 encoded name is specified for ty
 | Double      | 0x446f75626c65                | Double                        |
 | Byte        | 0x42797465                    | Byte                          |
 | ByteArray   | 0x427974654172726179          | ByteArray                     |
-| Character   | 0x436861726163746572          | Character                     |
 | String      | 0x537472696e67                | String                        |
 | UUID        | 0x55554944                    | UUID                          |
 | List        | 0x4c6973745b + ? + 5d         | List[?]                       |
