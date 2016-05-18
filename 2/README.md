@@ -107,19 +107,7 @@ ByteArray serialization is of a variable size.
 | 0              |  4             | *len* = number of bytes    |
 | 4              |  *len*         | bytes                      |
 
-### 1.10. Character
-
-The serialization format is based on the original Unicode specification, which defined characters as fixed-width 16-bit entities. Even though it is an outdated
-representation superseded by newer Unicode standards, this format is kept
-in the sake of simplifying usage of languages that still use this representation.
-
-Character serialization is always of a constant size (2 bytes).
-
-| Offset (bytes) | Length (bytes) | Value                      |
-|----------------|----------------|----------------------------|
-| 0              |  2             | character value            |
-
-### 1.11. String
+### 1.10. String
 
 String serialization is of variable size.
 
@@ -128,7 +116,7 @@ String serialization is of variable size.
 | 0              |  4             | *len* = string size in bytes |
 | 4              |  *len*         | UTF-8 encoded string         |
 
-### 1.12. UUID
+### 1.11. UUID
 
 UUID serialization is always of a constant size (16 bytes)
 
@@ -137,7 +125,7 @@ UUID serialization is always of a constant size (16 bytes)
 | 0              |  8             | most significant bytes       |
 | 8              |  8             | least significant bytes      |
 
-### 1.13. List
+### 1.12. List
 
 List serialization is of variable size.
 
@@ -146,7 +134,7 @@ List serialization is of variable size.
 | 0              |  4                       | *len* = number of list elements |
 | 4              |  *sum(len(serialize_N))* | serialize_N(T) byte array       |
 
-### 1.14. Optional
+### 1.13. Optional
 
 Optional serialization is of variable size.
 
@@ -154,7 +142,7 @@ Optional serialization is of variable size.
 |----------------|--------------------------|---------------------------------|
 | 0              |  1                       | 0, if the value is not present, 1 otherwise |
 
-### 1.15. Enum
+### 1.14. Enum
 
 Enum serialization is always of a constant size (4 bytes).
 
