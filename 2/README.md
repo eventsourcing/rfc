@@ -1,5 +1,3 @@
-# RFC 2/BES
-
 Binary Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
 
 * State: raw
