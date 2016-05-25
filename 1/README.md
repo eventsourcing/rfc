@@ -1,5 +1,3 @@
-# RFC 1/ELF
-
 Entity Layout Framework is a lightweight protocol for defining structured data
 types, intended to be used across different implementations of Eventsourcing
 and other software.
