@@ -29,6 +29,10 @@ The goals of this specification are:
 * To facilitate the development of shared libraries that implement this shared
   language.
 
+## A. Conventions
+
+1. An event that signifies a creation or an introduction of something (for example, `UserCreated`, or `TransactionImported`) is used as a target for polymorphic references (its ID will be referenced).
+
 ## 1. Name
 
 ### 1.1. Events
