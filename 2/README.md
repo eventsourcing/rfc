@@ -147,6 +147,7 @@ Optional serialization is of variable size.
 | Offset (bytes) | Length (bytes)           | Value                           |
 |----------------|--------------------------|---------------------------------|
 | 0              |  1                       | 0, if the value is not present, 1 otherwise |
+| 1              |  ?                       | For Optional[T], binary encoding of T |
 
 ### 1.15. Enum
 
