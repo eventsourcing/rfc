@@ -84,13 +84,15 @@ Default value: empty string
 
 Default value: `00000000-0000-0000-0000-000000000000`
 
-### 1.12. List
+### 1.12. Timestamp
+
+### 1.13. List
 
 List is a parametrized type and can take any other type as a parameter.
 
 Default value: empty list
 
-### 1.13. Optional
+### 1.14. Optional
 
 Optional is a type that signifies a value that might be either present or not.
 
@@ -98,7 +100,7 @@ Optional is a parametrized type and can take any other type as a parameter.
 
 Default value: value not present
 
-### 1.14. Enum
+### 1.15. Enum
 
 Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`). The ordinal values MUST start with 0
 and form a consecutive sequence.
@@ -127,6 +129,7 @@ It is RECOMMENDED that a human readable, latin1 encoded name is specified for ty
 | ByteArray   | 0x427974654172726179          | ByteArray                     |
 | String      | 0x537472696e67                | String                        |
 | UUID        | 0x55554944                    | UUID                          |
+| Timestamp   | 0x54696d657374616d70          | Timestamp                     |
 | List        | 0x4c6973745b + ? + 5d         | List[?]                       |
 | Optional    | 0x4f7074696f6e616c5b + ? + 5d | Optional[?]                   |
 | Enum        | 0x456e756d5b + ? + 5d         | Enum[?], where ? takes a form of NAME:ORDINAL[,...]. For example, `OPEN:1,CLOSED:2` |
