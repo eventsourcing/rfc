@@ -7,6 +7,5 @@
     * [3/CEP](3/README.md)
 * Draft
 * Stable
-* Legacy
+* Deprecated
 * Retired
-* Deleted
