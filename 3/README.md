@@ -67,3 +67,30 @@ The goals of this specification are:
 | Type   | Property    | Query                                             |
 |--------|-------------|---------------------------------------------------|
 | String | description | Latest `DescriptionChanged` with `reference = ID` |
+
+## 3. Deletion
+
+### 3.1. Events
+
+#### 3.1.1. Deleted
+
+* Layout name: `rfc.eventsourcing.com/spec:3/CEP/#Deleted`
+
+| Type   | Property    |
+|--------|-------------|
+| UUID   | reference   |
+
+#### 3.1.2. Undeleted
+
+* Layout name: `rfc.eventsourcing.com/spec:3/CEP/#Undeleted`
+
+| Type   | Property    |
+|--------|-------------|
+| UUID   | reference   |
+
+### 3.2. Protocol
+
+| Type    | Property    | Query                                             |
+|---------|-------------|---------------------------------------------------|
+| boolean | isDeleted   | Is there a `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp` |
+| boolean | deletedAt   | `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp`, extract `Deleted#timestamp` |
