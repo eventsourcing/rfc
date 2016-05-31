@@ -94,7 +94,7 @@ The goals of this specification are:
 
 ### 3.2. Protocol
 
-| Type    | Property    | Query                                             |
-|---------|-------------|---------------------------------------------------|
-| boolean | isDeleted   | Is there a `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp` |
-| Long    | deletedAt   | `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp`, extract `Deleted#timestamp` |
+| Type      | Property    | Query                                             |
+|-----------|-------------|---------------------------------------------------|
+| boolean   | isDeleted   | Is there a `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp` |
+| Timestamp | deletedAt   | `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp`, extract `Deleted#timestamp` |

@@ -123,7 +123,15 @@ UUID serialization is always of a constant size (16 bytes)
 | 0              |  8             | most significant bytes       |
 | 8              |  8             | least significant bytes      |
 
-### 1.12. List
+### 1.12. Timestamp
+
+Timestamp serialization is always of a constant size (8 bytes)
+
+| Offset (bytes) | Length (bytes) | Value                        |
+|----------------|----------------|------------------------------|
+| 0              |  8             | number of milliseconds since January 1, 1970, 00:00:00 GMT |
+
+### 1.13. List
 
 List serialization is of variable size.
 
@@ -132,7 +140,7 @@ List serialization is of variable size.
 | 0              |  4                       | *len* = number of list elements |
 | 4              |  *sum(len(serialize_N))* | serialize_N(T) byte array       |
 
-### 1.13. Optional
+### 1.14. Optional
 
 Optional serialization is of variable size.
 
@@ -140,7 +148,7 @@ Optional serialization is of variable size.
 |----------------|--------------------------|---------------------------------|
 | 0              |  1                       | 0, if the value is not present, 1 otherwise |
 
-### 1.14. Enum
+### 1.15. Enum
 
 Enum serialization is always of a constant size (4 bytes).
 
