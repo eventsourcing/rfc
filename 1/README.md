@@ -86,6 +86,8 @@ Default value: `00000000-0000-0000-0000-000000000000`
 
 ### 1.12. Timestamp
 
+Default value: January 1, 1970, 00:00:00 GMT
+
 ### 1.13. List
 
 List is a parametrized type and can take any other type as a parameter.
