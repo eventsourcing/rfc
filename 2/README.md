@@ -1,3 +1,5 @@
+![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
+
 Binary Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
 
 * State: raw
