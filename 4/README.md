@@ -1,6 +1,6 @@
 ![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
 
-YAML Layout Representation is a YAML structure for representing [1/ELF](,./1/README.md) layouts.
+YAML Layout Representation is a YAML structure for representing [1/ELF](../1/README.md) layouts.
 
 * Status: raw
 * Editor: Yurii Rashkovskii <yrashk@gmail.com>
