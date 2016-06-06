@@ -1,9 +1,12 @@
-![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
+---
+domain: rfc.eventsourcing.com
+shortname: 2/BES
+name: Binary Entity Serialization
+status: raw
+editor: Yurii Rashkovskii <yrashk@gmail.com>
+---
 
 Binary Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
-
-* State: raw
-* Editor: Yurii Rashkovskii <yrashk@gmail.com>
 
 ## License
 

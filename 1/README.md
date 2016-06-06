@@ -1,11 +1,14 @@
-![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
+---
+domain: rfc.eventsourcing.com
+shortname: 1/ELF
+name: Entity Layout Framework
+status: raw
+editor: Yurii Rashkovskii <yrashk@gmail.com>
+---
 
 Entity Layout Framework is a lightweight protocol for defining structured data
 types, intended to be used across different implementations of Eventsourcing
 and other software.
-
-* State: raw
-* Editor: Yurii Rashkovskii <yrashk@gmail.com>
 
 ## License
 

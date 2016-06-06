@@ -1,9 +1,12 @@
-![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
+---
+domain: rfc.eventsourcing.com
+shortname: 3/CEP
+name: Common Entities and Protocols
+status: raw
+editor: Yurii Rashkovskii <yrashk@gmail.com>
+---
 
 Common Entities and Protocols is a set of most common events and protocols to be shared across interoperable applications.
-
-* State: raw
-* Editor: Yurii Rashkovskii <yrashk@gmail.com>
 
 ## License
 

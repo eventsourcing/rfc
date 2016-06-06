@@ -1,9 +1,12 @@
-![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
+---
+domain: rfc.eventsourcing.com
+shortname: 4/YLR
+name: YAML Layout Representation
+status: raw
+editor: Yurii Rashkovskii <yrashk@gmail.com>
+---
 
 YAML Layout Representation is a YAML structure for representing [1/ELF](../1/README.md) layouts.
-
-* Status: raw
-* Editor: Yurii Rashkovskii <yrashk@gmail.com>
 
 ## License
 
