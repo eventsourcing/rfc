@@ -40,9 +40,14 @@ The goals of this specification are:
 
 ## 1. Name
 
+Naming is one of a very common concepts across all types of applications. Making
+name designation a universal, shared concept allows interoperating libraries and applications to deduce the naming of any model instance.
+
 ### 1.1. Events
 
-#### 1.1.1. NameChanged
+#### 1.1.1. NameChanged <a name="NameChanged"></a>
+
+This event signifies the name change for a referenced instance.
 
 * Layout name: `rfc.eventsourcing.com/spec:3/CEP/#NameChanged`
 
@@ -53,6 +58,8 @@ The goals of this specification are:
 
 ### 1.2. Protocol
 
+This protocol allows to deduce a "final" instance name.
+
 | Type   | Property | Query                                      |
 |--------|----------|--------------------------------------------|
 | String | name     | Latest `NameChanged` with `reference = ID` |
@@ -60,9 +67,14 @@ The goals of this specification are:
 
 ## 2. Description
 
+Just like naming, description is a common concept that allows to provide
+a more in-depth explanation of a model instance.
+
 ### 2.1. Events
 
-#### 2.1.1. DescriptionChanged
+#### 2.1.1. DescriptionChanged <a name="DescriptionChanged"></a>
+
+This event signifies the description change for a referenced instance.
 
 * Layout name: `rfc.eventsourcing.com/spec:3/CEP/#DescriptionChanged`
 
@@ -73,15 +85,23 @@ The goals of this specification are:
 
 ### 2.2. Protocol
 
+This protocol allows to deduce a "final" instance description.
+
 | Type   | Property    | Query                                             |
 |--------|-------------|---------------------------------------------------|
 | String | description | Latest `DescriptionChanged` with `reference = ID` |
 
-## 3. Deletion
+## 4. Deletion
 
-### 3.1. Events
+Model instance deletion is a concept that allows to mark certain instances
+deleted. By sharing this language, libraries and applications can delete
+instances of models they are not explicitly familiar with
 
-#### 3.1.1. Deleted
+### 4.1. Events
+
+#### 4.1.1. Deleted <a name="Deleted"></a>
+
+Signifies deletion of an instance.
 
 * Layout name: `rfc.eventsourcing.com/spec:3/CEP/#Deleted`
 
@@ -89,17 +109,22 @@ The goals of this specification are:
 |--------|-------------|
 | UUID   | reference   |
 
-#### 3.1.2. Undeleted
+#### 4.1.2. Undeleted <a name="Undeleted"></a>
+
+Signifies a reversal of deletion of an instance. **NB**: instead of referring
+to an original instance, it refers to a `Deleted` event. This simplifies querying for this event.
 
 * Layout name: `rfc.eventsourcing.com/spec:3/CEP/#Undeleted`
 
 | Type   | Property    |
 |--------|-------------|
-| UUID   | reference   |
+| UUID   | deleted     |
 
-### 3.2. Protocol
+### 4.2. Protocol
+
+This protocol allows to determine the deletion status of an instance.
 
 | Type      | Property    | Query                                             |
 |-----------|-------------|---------------------------------------------------|
-| boolean   | isDeleted   | Is there a `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp` |
-| Timestamp | deletedAt   | `Deleted` with `reference = ID` not followed by `Undeleted` with the same reference, but larger `timestamp`, extract `Deleted#timestamp` |
+| boolean   | isDeleted   | Is there a `Deleted` with `reference = ID` not followed by `Undeleted` referring to it |
+| Timestamp | deletedAt   | `Deleted` with `reference = ID` not followed by `Undeleted` referring to it, extract `Deleted#timestamp` |
