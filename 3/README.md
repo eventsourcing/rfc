@@ -124,7 +124,6 @@ to an original instance, it refers to a `Deleted` event. This simplifies queryin
 
 This protocol allows to determine the deletion status of an instance.
 
-| Type      | Property    | Query                                             |
-|-----------|-------------|---------------------------------------------------|
-| boolean   | isDeleted   | Is there a `Deleted` with `reference = ID` not followed by `Undeleted` referring to it |
-| Timestamp | deletedAt   | `Deleted` with `reference = ID` not followed by `Undeleted` referring to it, extract `Deleted#timestamp` |
+| Type              | Property    | Query                                             |
+|-------------------|-------------|---------------------------------------------------|
+| Optional[Deleted] | deleted     | `Deleted` with `reference = ID` that is not followed by `Undeleted` referring to it |
