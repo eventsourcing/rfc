@@ -2,7 +2,7 @@
 domain: rfc.eventsourcing.com
 shortname: 3/CEP
 name: Common Entities and Protocols
-status: raw
+status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
