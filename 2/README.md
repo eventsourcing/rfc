@@ -2,7 +2,7 @@
 domain: rfc.eventsourcing.com
 shortname: 2/BES
 name: Binary Entity Serialization
-status: raw
+status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 

@@ -2,7 +2,7 @@
 domain: rfc.eventsourcing.com
 shortname: 1/ELF
 name: Entity Layout Framework
-status: raw
+status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
