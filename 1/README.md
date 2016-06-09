@@ -114,6 +114,12 @@ and form a consecutive sequence.
 
 Default value: smallest ordinal value (0).
 
+### 1.16. Entity Layout
+
+See [3. Entity Layout](../1/README.md#entity-layout) for the definition.
+
+Entity is represented as a sequence of all its (lexicographically sorted) properties represntations.
+
 ## 2. Fingerprinting
 
 Fingerprinting is a technique that gives a specific, byte-to-byte representation
@@ -123,25 +129,26 @@ MUST uniquely represents the data type.
 It is RECOMMENDED that a human readable, latin1 encoded name is specified for types to avoid decentralized allocation problem. However, this is not a requirement but a suggestion, followed by standard types defined in this specification.
 
 
-| Type        | Fingerprint (hex)             | Fingerprint (Human-readable)  |
-|-------------|-------------------------------|-------------------------------|
-| Boolean     | 0x426f6f6c65616e              | Boolean                       |
-| Short       | 0x53686f7274                  | Short                         |
-| Integer     | 0x496e7465676572              | Integer                       |
-| Long        | 0x4c6f6e67                    | Long                          |
-| BigDecimal  | 0x426967446563696d616c        | BigDecimal                    |
-| Float       | 0x466c6f6174                  | Float                         |
-| Double      | 0x446f75626c65                | Double                        |
-| Byte        | 0x42797465                    | Byte                          |
-| ByteArray   | 0x427974654172726179          | ByteArray                     |
-| String      | 0x537472696e67                | String                        |
-| UUID        | 0x55554944                    | UUID                          |
-| Timestamp   | 0x54696d657374616d70          | Timestamp                     |
-| List        | 0x4c6973745b + ? + 5d         | List[?]                       |
-| Optional    | 0x4f7074696f6e616c5b + ? + 5d | Optional[?]                   |
-| Enum        | 0x456e756d5b + ? + 5d         | Enum[?], where ? takes a form of NAME:ORDINAL[,...]. For example, `OPEN:1,CLOSED:2` |
+| Type          | Fingerprint (hex)             | Fingerprint (Human-readable)  |
+|---------------|-------------------------------|-------------------------------|
+| Boolean       | 0x426f6f6c65616e              | Boolean                       |
+| Short         | 0x53686f7274                  | Short                         |
+| Integer       | 0x496e7465676572              | Integer                       |
+| Long          | 0x4c6f6e67                    | Long                          |
+| BigDecimal    | 0x426967446563696d616c        | BigDecimal                    |
+| Float         | 0x466c6f6174                  | Float                         |
+| Double        | 0x446f75626c65                | Double                        |
+| Byte          | 0x42797465                    | Byte                          |
+| ByteArray     | 0x427974654172726179          | ByteArray                     |
+| String        | 0x537472696e67                | String                        |
+| UUID          | 0x55554944                    | UUID                          |
+| Timestamp     | 0x54696d657374616d70          | Timestamp                     |
+| List          | 0x4c6973745b + ? + 5d         | List[?]                       |
+| Optional      | 0x4f7074696f6e616c5b + ? + 5d | Optional[?]                   |
+| Enum          | 0x456e756d5b + ? + 5d         | Enum[?], where ? takes a form of NAME:ORDINAL[,...]. For example, `OPEN:1,CLOSED:2` |
+| Entity Layout | ?                             | Layout fingerprint (bytes) |
 
-## 3. Entity Layout
+## 3. Entity Layout <a name="entity-layout"></a>
 
 Entity is a data type that consists of its own name and number of typed and named properties. Typically, this would be a a class or a record.
 
@@ -160,7 +167,7 @@ Entity layout fingerprint is formed by following the following procedure:
    1. update the hasher with the property name, serialized as UTF-8.
    1. update the hasher with the property type's fingerprint.
 
-The resulting hash is used as a version of the entity layout.
+The resulting hash is used as a fingerprint of the entity layout.
 
 ## 4. References
 
