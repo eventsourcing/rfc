@@ -26,6 +26,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 To provide a concise, human-readable, machine-parseable universal representation of layouts to be understood and re-used across projects.
 
+This specification is aiming compatibility with [YAML 1.1](http://www.yaml.org/spec/1.1)
+
 ## 1. Format
 
 YAML representation of a layout consists of a single object definition and zero or more property objects. A property object is an object that contains one entry with the property name as a key and type's fingerprint. The fingerprint MUST be
