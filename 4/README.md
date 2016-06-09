@@ -30,7 +30,12 @@ This specification is aiming compatibility with [YAML 1.1](http://www.yaml.org/s
 
 ## 1. Format
 
-YAML representation of a layout consists of a single object definition and zero or more property objects. A property object is an object that contains one entry with the property name as a key and type's fingerprint. The fingerprint MUST be
+YAML representation of a layout MUST consist of a single-property object definition. The key is layout name and the value is a list that:
+
+* MUST have its first element as a hexadecimal representation of the layout's fingerprint
+* MAY contain one or more *property entries*
+
+A *property entry* is a single-property object with the property name as a key and its type's fingerprint as a value. The fingerprint MUST be
 either a string, or a hexadecimal representation (`0x...`). It is RECOMMENDED
 to only use the hexadecimal representation for fingerprints that are not human-readable.
 
@@ -38,8 +43,9 @@ For example, a `NameChanged` layout from [3/CEP](../3/README.md) can be represen
 
 ```yaml
 "rfc.eventsourcing.com/spec:3/CEP/#NameChanged":
+  - 0x7ca89be31d0b990b23c7e2f0b58f7dfa305932a3
   - reference: UUID
-  - name: 0x537472696e67 # hexadecimal version of the `String` fingerprint
+  - name: String
 ```
 
-The order of properties is unimportant as lexicographical sorting for the purpose of hashing is done transparently to the user.
+The order of property entries is unimportant as lexicographical sorting for the purpose of hashing is done transparently to the user.
