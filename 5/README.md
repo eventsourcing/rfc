@@ -71,7 +71,7 @@ Serialized as an usigned integer number, 0..255
 
 ### 2.9. ByteArray
 
-Serialized as a hexadecimal number
+Serialized as a base64 string
 
 ### 2.10. String
 
