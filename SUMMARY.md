@@ -8,6 +8,7 @@
     * [1/ELF](1/README.md)
     * [2/BES](2/README.md)
     * [3/CEP](3/README.md)
+    * [6/HLC](6/README.md)
 * Stable
 * Deprecated
 * Retired
