@@ -1,12 +1,14 @@
 ---
 domain: rfc.eventsourcing.com
-shortname: 4/YLR
-name: YAML Layout Representation
+shortname: 4/YLER
+name: YAML Layout and Entity Representation
 status: raw
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
-YAML Layout Representation is a YAML structure for representing [1/ELF](../1/README.md) layouts.
+YAML Layout and Entity Representation is a YAML structure for representing [1/ELF](../1/README.md) layouts.
+
+See also: [5/YES](../5/README.md)
 
 ## License
 
@@ -28,11 +30,11 @@ To provide a concise, human-readable, machine-parseable universal representation
 
 This specification is aiming compatibility with [YAML 1.1](http://www.yaml.org/spec/1.1)
 
-## 1. Format
+## 1. Layout Format
 
-YAML representation of a layout MUST consist of a single-property object definition. The key is layout name and the value is a list that:
+YAML representation of a layout MUST consist of a single-property object definition. The key is layout fingerprint (binary) and the value MUST be a list that:
 
-* MUST have its first element as a hexadecimal representation of the layout's fingerprint
+* MUST have its first element as a layout name
 * MAY contain one or more *property entries*
 
 A *property entry* is a single-property object with the property name as a key and its type's fingerprint as a value. The fingerprint MUST be
@@ -42,10 +44,30 @@ to only use the hexadecimal representation for fingerprints that are not human-r
 For example, a `NameChanged` layout from [3/CEP](../3/README.md) can be represented as:
 
 ```yaml
-"rfc.eventsourcing.com/spec:3/CEP/#NameChanged":
-  - 0x7ca89be31d0b990b23c7e2f0b58f7dfa305932a3
-  - reference: UUID
+fKib4x0LmQsjx+LwtY99+jBZMqM=:
+  - rfc.eventsourcing.com/spec:3/CEP/#NameChanged
   - name: String
+  - reference: UUID
+  - timestamp: Timestamp
 ```
 
 The order of property entries is unimportant as lexicographical sorting for the purpose of hashing is done transparently to the user.
+
+## 2. Entity Format
+
+Entity is a layout instance associated with a UUID. This UUID is not represented by any layout individual property. Following the lexicographical order of properties of the layout, an individual entity MUST be serialized as a single-property object where the key is entity's UUID and the value MUST be a list that:
+
+* MUST have its first element as a binary layout fingerprint
+* MUST contain the same number of *property values* as the number of *property entries* in the layout, in the same order
+
+For example, an instance of a `NameChanged` entity from [3/CEP](../3/README.md) can be represented as:
+
+```yaml
+4782a2cc-365f-4ec5-9ba4-4523744ffc1f:
+  - fKib4x0LmQsjx+LwtY99+jBZMqM=
+  - John Doe
+  - 27cb36ac-ef48-47ff-b565-a263c4140aa8
+  - 1465786828384
+```
+
+Multiple entities MAY be combined into a multiple-properties object when the order of these entities is not significant.
