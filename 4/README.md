@@ -48,7 +48,7 @@ fKib4x0LmQsjx+LwtY99+jBZMqM=:
   - rfc.eventsourcing.com/spec:3/CEP/#NameChanged
   - name: String
   - reference: UUID
-  - timestamp: Timestamp
+  - timestamp: <rfc.eventsourcing.com/spec:6/HLC/#Timestamp fingerprint>
 ```
 
 The order of property entries is unimportant as lexicographical sorting for the purpose of hashing is done transparently to the user.
@@ -67,7 +67,7 @@ For example, an instance of a `NameChanged` entity from [3/CEP](../3/README.md) 
   - fKib4x0LmQsjx+LwtY99+jBZMqM=
   - John Doe
   - 27cb36ac-ef48-47ff-b565-a263c4140aa8
-  - 1465786828384
+  - '15783086287502613943.0'
 ```
 
 Multiple entities MAY be combined into a multiple-properties object when the order of these entities is not significant.
