@@ -26,7 +26,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## 0. Goals
 
-* To eliminate a class of errors related to mismanaged entity structure versioning
+* To define basic data structures
+* To eliminate a class of errors related to mismanaged data structures versioning
 
 ## 1. Data Types
 
@@ -114,11 +115,11 @@ and form a consecutive sequence.
 
 Default value: smallest ordinal value (0).
 
-### 1.16. Entity Layout
+### 1.16. Object
 
-See [3. Entity Layout](../1/README.md#entity-layout) for the definition.
+See [3. Object](../1/README.md#object) for the definition.
 
-Entity is represented as a sequence of all its (lexicographically sorted) properties represntations.
+Object is represented as a sequence of all its (lexicographically sorted) properties representations.
 
 ## 2. Fingerprinting
 
@@ -148,9 +149,9 @@ It is RECOMMENDED that a human readable, latin1 encoded name is specified for ty
 | Enum          | 0x456e756d5b + ? + 5d         | Enum[?], where ? takes a form of NAME:ORDINAL[,...]. For example, `OPEN:1,CLOSED:2` |
 | Entity Layout | ?                             | Layout fingerprint (bytes) |
 
-## 3. Entity Layout <a name="entity-layout"></a>
+## 3. Object Layout <a name="object-layout"></a>
 
-Entity is a data type that consists of its own name and number of typed and named properties. Typically, this would be a a class or a record.
+Object is a data type that consists of its own name and number of typed and named properties. Typically, this would be a a class or a record.
 
 All entity's properties MUST be sorted lexicographically. This enforces the following:
 
@@ -161,7 +162,7 @@ All entity's properties MUST be sorted lexicographically. This enforces the foll
 
 Entity layout fingerprint is formed by following the following procedure:
 
-1. Create a hasher (using *hashing algorithm* as defined in 4.1.)
+1. Create a hasher (using *hashing algorithm* as defined in 5.1.)
 1. Update the hasher with the type name, serialized as UTF-8.
 1. For every property,
    1. update the hasher with the property name, serialized as UTF-8.
@@ -169,8 +170,29 @@ Entity layout fingerprint is formed by following the following procedure:
 
 The resulting hash is used as a fingerprint of the entity layout.
 
-## 4. References
+## 4. Entity
 
-### 4.1. Hashing Algorithm
+*Entity* is a top-level [object](../1/README.md#object-layout) that can be recorded by Eventsourcing. Every entity MUST have the following base layout:
+
+| Type                                               | Property       |
+|----------------------------------------------------|----------------|
+| [HLC](rfc.eventsourcing.com/spec:6/HLC/#Timestamp) | timestamp      |
+
+Any recorded entity MUST be identified with a UUID. UUID does not become
+a part of its layout.
+
+There are two types of entities.
+
+### 4.1. Command
+
+This entity type represents a request for changes.
+
+### 4.2. Event
+
+This entity type represents a statement of fact.
+
+## 5. References
+
+### 5.1. Hashing Algorithm
 
 This specification defines *hashing algorithm* as SHA-1.
