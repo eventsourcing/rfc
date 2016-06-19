@@ -69,7 +69,7 @@ This event describes a replacement of an entity layout with a new one. Old
 layout's fingerprint MUST be recorded in `fingerprint`, and a corresponding
 `EntityLayoutIntroduced`'s UUID MUST be recorded in `replacement`.
 
-#### 1.1.2. EventCausalityEstablished <a name="EventCausalityEstablished"></a>
+#### 1.1.3. EventCausalityEstablished <a name="EventCausalityEstablished"></a>
 
 Layout name: `rfc.eventsourcing.com/spec:8/EMT/#EventCausalityEstablished`
 
