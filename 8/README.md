@@ -69,23 +69,11 @@ This event describes a replacement of an entity layout with a new one. Old
 layout's fingerprint MUST be recorded in `fingerprint`, and a corresponding
 `EntityLayoutIntroduced`'s UUID MUST be recorded in `replacement`.
 
-#### 1.1.3. EventCausalityEstablished <a name="EventCausalityEstablished"></a>
-
-Layout name: `rfc.eventsourcing.com/spec:8/EMT/#EventCausalityEstablished`
-
-| Type | Property |
-|------|----------|
-| UUID | event    |
-| UUID | command  |
-
-When event replacement happens, event->command causality is lost and for some types of applications it means information loss. In order to mitigate this, *EventCausalityEstablished* signals an establishment of a new causality relationship for an event. Repository's journal SHOULD use this type of event
-to establish this relationship internally.
-
 ## 2. Transformation
 
 ### 2.1. Events
 
-A migration command SHOULD process events referenced by `EntityLayoutIntroduced.previousFingerprint` and MAY produce new corresponding events with fingerprints referenced by `EntityLayoutIntroduced.fingerprint`.
+When event replacement happens, event->command causality is lost and for some types of applications it means information loss. In order to mitigate this, [EventCausalityEstablished](http://rfc.eventsourcing.com/spec:9/RIG/#EventCausalityEstablished) signals an establishment of a new causality relationship for an event.
 
 ### 2.2. Commands
 
