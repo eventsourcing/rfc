@@ -80,6 +80,16 @@ For every event E<sub>k</sub>, repository MUST perform the following operations:
 1. Record E<sub>k</sub> and associate it with command C.
 1. Index E<sub>k</sub> (see [5. Indexing and Querying](../9/README.md#indexing-and-querying)).
 1. Check if there any parties interested in this event should Tx<sub>C</sub> successfuly commit (*entity subscribers*). If there are any, E<sub>k</sub>  should be associated with these matching entity subscribers.
+1. Record a corresponding `EventCausalityEstablished` event establishing a causal relationship between command C and event E<sub><k/sub>
+
+Layout name: `rfc.eventsourcing.com/spec:9/RIG/#EventCausalityEstablished`
+
+| Type | Property |
+|------|----------|
+| UUID | event    |
+| UUID | command  |
+
+Repository MAY record [EntityLayoutIntroduced](../9/README.md#EntityLayoutIntroduced) when it first encounters a new layout.
 
 <a name="CommandTerminatedExceptionally"></a> If at any time during event collection, an exception is raised (or an equivalent of such), repository MUST remove all recorded events and replace it with a `CommandTerminatedExceptionally` event:
 
