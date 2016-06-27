@@ -39,7 +39,7 @@ This specification is aiming compatibility with [YAML 1.1](http://www.yaml.org/s
 
 ### 2.1. Boolean
 
-Serialized as a string `"true"` or `"false"`
+Serialized as a boolean
 
 ### 2.2. Short
 
