@@ -1,12 +1,12 @@
 ---
 domain: rfc.eventsourcing.com
-shortname: 4/YLER
-name: YAML Layout and Entity Representation
+shortname: 4/JLER
+name: JSON Layout and Entity Representation
 status: raw
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
-YAML Layout and Entity Representation is a YAML structure for representing [1/ELF](../1/README.md) layouts.
+JSON Layout and Entity Representation is a JSON structure for representing [1/ELF](../1/README.md) layouts.
 
 See also: [5/YES](../5/README.md)
 
@@ -28,11 +28,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 To provide a concise, human-readable, machine-parseable universal representation of layouts to be understood and re-used across projects.
 
-This specification is aiming compatibility with [YAML 1.1](http://www.yaml.org/spec/1.1)
+This specification is aiming compatibility with [ECMA 404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)
 
 ## 1. Layout Format
 
-YAML representation of a layout MUST consist of a single-property object definition. The key is layout fingerprint (binary) and the value MUST be a list that:
+JSON representation of a layout MUST consist of a single-property object definition. The key is layout fingerprint (binary) and the value MUST be a list that:
 
 * MUST have its first element as a layout name
 * MAY contain one or more *property entries*
@@ -43,12 +43,21 @@ to only use the hexadecimal representation for fingerprints that are not human-r
 
 For example, a `NameChanged` layout from [3/CEP](../3/README.md) can be represented as:
 
-```yaml
-fKib4x0LmQsjx+LwtY99+jBZMqM=:
-  - rfc.eventsourcing.com/spec:3/CEP/#NameChanged
-  - name: String
-  - reference: UUID
-  - timestamp: <rfc.eventsourcing.com/spec:6/HLC/#Timestamp fingerprint>
+```json
+{
+  "fKib4x0LmQsjx+LwtY99+jBZMqM=": [
+    "rfc.eventsourcing.com/spec:3/CEP/#NameChanged",
+    {
+      "name": "String"
+    },
+    {
+      "reference": "UUID"
+    },
+    {
+      "timestamp": "<rfc.eventsourcing.com/spec:6/HLC/#Timestamp fingerprint>"
+    }
+  ]
+}
 ```
 
 The order of property entries is unimportant as lexicographical sorting for the purpose of hashing is done transparently to the user.
@@ -62,12 +71,15 @@ Entity is a layout instance associated with a UUID. This UUID is not represented
 
 For example, an instance of a `NameChanged` entity from [3/CEP](../3/README.md) can be represented as:
 
-```yaml
-4782a2cc-365f-4ec5-9ba4-4523744ffc1f:
-  - fKib4x0LmQsjx+LwtY99+jBZMqM=
-  - John Doe
-  - 27cb36ac-ef48-47ff-b565-a263c4140aa8
-  - '15783086287502613943.0'
+```json
+{
+  "4782a2cc-365f-4ec5-9ba4-4523744ffc1f": [
+    "fKib4x0LmQsjx+LwtY99+jBZMqM=",
+    "John Doe",
+    "27cb36ac-ef48-47ff-b565-a263c4140aa8",
+    "15783086287502613943.0"
+  ]
+}
 ```
 
 Multiple entities MAY be combined into a multiple-properties object when the order of these entities is not significant.

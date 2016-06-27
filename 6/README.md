@@ -61,11 +61,3 @@ the general layout model, defined as:
 
 Binary encoding of an HLC timestamp must follow [2/BES](../2/README.md) for
 layouts.
-
-### 3.2. YAML Encoding
-
-YAML encoding of an HLC timestamp (to be used along other [5/YES](../5/README.md) encodings) is as follows:
-
-```yaml
-"<logical time>.<logical counter>"
-```
