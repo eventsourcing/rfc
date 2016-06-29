@@ -1,12 +1,12 @@
 ---
 domain: rfc.eventsourcing.com
-shortname: 5/YES
-name: YAML Entity Serialization
+shortname: 5/JES
+name: JSON Entity Serialization
 status: raw
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
-YAML Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
+JSON Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
 
 See also: [2/BES](../2/README.md), [1/ELF](../1/README.md)
 
@@ -31,9 +31,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 * To ensure there is a format that can be used to ease cross-version data portability
 * To be compatible with [RFC1/ELF](../1/README.md)
 
-## 1. YAML standard
+## 1. JSON standard
 
-This specification is aiming compatibility with [YAML 1.1](http://www.yaml.org/spec/1.1)
+This specification is aiming compatibility with [ECMA 404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)
 
 ## 2. Data Types
 
@@ -79,7 +79,7 @@ Serialized as a string
 
 ### 2.11. UUID
 
-Serialized as a canonical UUID string representation, xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx
+Serialized as a canonical UUID string representation, `"xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx"`
 
 ### 2.12. Timestamp
 
@@ -87,20 +87,20 @@ Serialized as a number of milliseconds since January 1, 1970, 00:00:00 GMT
 
 ### 2.13. List
 
-Serialized as YAML list
+Serialized as a JSON list
 
 ### 2.14. Optional
 
 Serialized as an empty map for non-present values:
 
-```yaml
+```json
 {}
 ```
 
 Serialized as a map with `present` key for present values:
 
-```yaml
-{present: <value>}
+```json
+{"present": <value>}
 ```
 
 ### 2.15. Enum
