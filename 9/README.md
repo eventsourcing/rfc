@@ -97,7 +97,10 @@ Repository MAY record [EntityLayoutIntroduced](../9/README.md#EntityLayoutIntrod
 
 | Type      | Property       |
 |-----------|----------------|
-| UUID      | command        |
+
+
+The relationship between `CommandTerminatedExceptionally` and the command
+is established through a matching `EventCausalityEstablished` event.
 
 Repository MAY add arbitrary additional informational events referring to the instance of this `CommandTerminatedExceptionally` event to capture details of the failure. For human-readable descriptions, it is RECOMMENDED to use [rfc.eventsourcing.com/spec:3/CEP/#DescriptionChanged](http://rfc.eventsourcing.com/spec:3/CEP/#DescriptionChanged).
 
