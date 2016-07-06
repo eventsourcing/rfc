@@ -2,7 +2,7 @@
 domain: rfc.eventsourcing.com
 shortname: 8/EMT
 name: Entity Migration and Transformation
-status: raw
+status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
