@@ -2,7 +2,7 @@
 domain: rfc.eventsourcing.com
 shortname: 7/LDL
 name: Layout Describing Layout
-status: raw
+status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 

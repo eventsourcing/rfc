@@ -2,7 +2,7 @@
 domain: rfc.eventsourcing.com
 shortname: 9/RIG
 name: Repository Interfaces and Guarantees
-status: raw
+status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
