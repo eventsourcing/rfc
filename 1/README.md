@@ -115,7 +115,14 @@ and form a consecutive sequence.
 
 Default value: smallest ordinal value (0).
 
-### 1.16. Object
+### 1.16. Map
+
+Map represents a collection of (key, value) pairs, such that each possible
+key appears at most once in the collection.
+
+Default value: an empty map.
+
+### 1.17. Object
 
 See [3. Object](../1/README.md#object) for the definition.
 
@@ -147,6 +154,7 @@ It is RECOMMENDED that a human readable, latin1 encoded name is specified for ty
 | List          | 0x4c6973745b + ? + 5d         | List[?]                       |
 | Optional      | 0x4f7074696f6e616c5b + ? + 5d | Optional[?]                   |
 | Enum          | 0x456e756d5b + ? + 5d         | Enum[?], where ? takes a form of NAME:ORDINAL[,...]. For example, `OPEN:1,CLOSED:2` |
+| Map           | 0x4d61705b + ? + 5d5b + ? + 5d| Map[?][?] |
 | Entity Layout | ?                             | Layout fingerprint (bytes) |
 
 ## 3. Object Layout <a name="object-layout"></a>
