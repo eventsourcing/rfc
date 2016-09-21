@@ -107,3 +107,11 @@ Serialized as a map with `present` key for present values:
 
 Serialized as a string value associated with the ordinal value. If
 string value is absent, the ordinal value integer is used.
+
+### 2.16. Map
+
+Serialized as a JSON list of two-elements lists:
+
+```json
+[[key, value]]
+```

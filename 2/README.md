@@ -161,3 +161,14 @@ Enum serialization is always of a constant size (4 bytes).
 | Offset (bytes) | Length (bytes) | Value                      |
 |----------------|----------------|----------------------------|
 | 0              |  4             | ordinal (integer) value    |
+
+### 1.16. Map
+
+Map serialization is of variable size.
+
+| Offset (bytes) | Length (bytes)           | Value                           |
+|----------------|--------------------------|---------------------------------|
+| 0              |  4                       | *len* = number of map elements  |
+| 4              |  *sum(len(serialize_N))* | serialize_N(T) byte array       |
+
+Where `serialize_N(T)` is a serialization of Nth (key, value) pair that follows respective types serialization, in the following order: key, value.
