@@ -1,12 +1,12 @@
 ---
 domain: rfc.eventsourcing.com
-shortname: 5/JES
-name: JSON Entity Serialization
+shortname: 5/JEST
+name: JSON Entity Serializing Transformation
 status: raw
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
-JSON Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
+JSON Entity Serializing Transformation is a data storage and exchange serialization format used in Eventsourcing and other projects.
 
 See also: [2/BES](../2/README.md), [1/ELF](../1/README.md)
 
