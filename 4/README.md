@@ -1,12 +1,12 @@
 ---
 domain: rfc.eventsourcing.com
-shortname: 4/JLER
-name: JSON Layout and Entity Representation
+shortname: 4/JELLO
+name: JSON Entity Layout Objects
 status: raw
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
-JSON Layout and Entity Representation is a JSON structure for representing [1/ELF](../1/README.md) layouts.
+JSON Entity Layout Objects is a JSON structure for representing [1/ELF](../1/README.md) layouts.
 
 See also: [5/YES](../5/README.md)
 
