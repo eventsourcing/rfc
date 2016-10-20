@@ -1,12 +1,12 @@
 ---
 domain: rfc.eventsourcing.com
-shortname: 2/BES
-name: Binary Entity Serialization
+shortname: 2/BEST
+name: Binary Entity Serializing Transformation
 status: draft
 editor: Yurii Rashkovskii <yrashk@gmail.com>
 ---
 
-Binary Entity Serialization is a data storage and exchange serialization format used in Eventsourcing and other projects.
+Binary Entity Serializing Transformation is a data storage and exchange serialization format used in Eventsourcing and other projects.
 
 ## License
 
