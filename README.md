@@ -3,6 +3,8 @@
 This site contains published Eventsourcing RFCs (request for comments) to document and clarify protocols, formats and APIs. To create or update an RFC,
 please submit a pull request to [the repository](https://github.com/eventsourcing/rfc).
 
+The intention for this repository is to serve as RFC across different Eventsourcing projects.
+
 ## Guidelines
 
 * A specification SHOULD be created and modified by pull requests according to [C4](http://rfc.unprotocols.org/spec:1/C4)
