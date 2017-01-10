@@ -57,39 +57,43 @@ Serialized as a signed integer number, –9223372036854775808 to 922337203685477
 
 Serialized as a floating point number, no limits.
 
-### 2.6. Float
+### 2.6. BigInteger
+
+Serialized as an integer, no limits.
+
+### 2.7. Float
 
 Serialized as a floating point number, 3.4E +/- 38 (7 digits)
 
-### 2.7. Double
+### 2.8. Double
 
 Serialized as a floating point number, 1.7E +/- 308 (15 digits)
 
-### 2.8. Byte
+### 2.9. Byte
 
 Serialized as an usigned integer number, 0..255
 
-### 2.9. ByteArray
+### 2.10. ByteArray
 
 Serialized as a base64 string
 
-### 2.10. String
+### 2.11. String
 
 Serialized as a string
 
-### 2.11. UUID
+### 2.12. UUID
 
 Serialized as a canonical UUID string representation, `"xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx"`
 
-### 2.12. Timestamp
+### 2.13. Timestamp
 
 Serialized as a number of milliseconds since January 1, 1970, 00:00:00 GMT
 
-### 2.13. List
+### 2.14. List
 
 Serialized as a JSON list
 
-### 2.14. Optional
+### 2.15. Optional
 
 Serialized as an empty map for non-present values:
 
@@ -103,12 +107,12 @@ Serialized as a map with `present` key for present values:
 {"present": <value>}
 ```
 
-### 2.15. Enum
+### 2.16. Enum
 
 Serialized as a string value associated with the ordinal value. If
 string value is absent, the ordinal value integer is used.
 
-### 2.16. Map
+### 2.17. Map
 
 Serialized as a JSON list of two-elements lists:
 

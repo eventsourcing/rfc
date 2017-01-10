@@ -75,7 +75,16 @@ BigDecimal serialization is of a variable size.
 
 The unscaled value is the The unscaled will contain the minimum number of bytes required to represent the value, including at least one sign bit.
 
-### 1.6. Float
+### 1.6. BigInteger
+
+BigInteger serialization is of a variable size.
+
+| Offset (bytes) | Length (bytes) | Value                                |
+|----------------|----------------|--------------------------------------|
+| 0              |  4             | *len* = length                       |
+| 4              |  *len*         | value                                |
+
+### 1.7. Float
 
 Float serialization is always of a constant size (4 bytes).
 
@@ -83,7 +92,7 @@ Float serialization is always of a constant size (4 bytes).
 |----------------|----------------|----------------------------|
 | 0              |  4             | float value                |
 
-### 1.7. Double
+### 1.8. Double
 
 Double serialization is always of a constant size (8 bytes).
 
@@ -91,7 +100,7 @@ Double serialization is always of a constant size (8 bytes).
 |----------------|----------------|----------------------------|
 | 0              |  8             | double value               |
 
-### 1.8. Byte
+### 1.9. Byte
 
 Byte serialization is always of a constant size (1 bytes).
 
@@ -99,7 +108,7 @@ Byte serialization is always of a constant size (1 bytes).
 |----------------|----------------|----------------------------|
 | 0              |  1             | byte value                 |
 
-### 1.9. ByteArray
+### 1.10. ByteArray
 
 ByteArray is an array of bytes.
 
@@ -110,7 +119,7 @@ ByteArray serialization is of a variable size.
 | 0              |  4             | *len* = number of bytes    |
 | 4              |  *len*         | bytes                      |
 
-### 1.10. String
+### 1.11. String
 
 String serialization is of variable size.
 
@@ -119,7 +128,7 @@ String serialization is of variable size.
 | 0              |  4             | *len* = string size in bytes |
 | 4              |  *len*         | UTF-8 encoded string         |
 
-### 1.11. UUID
+### 1.12. UUID
 
 UUID serialization is always of a constant size (16 bytes)
 
@@ -128,7 +137,7 @@ UUID serialization is always of a constant size (16 bytes)
 | 0              |  8             | most significant bytes       |
 | 8              |  8             | least significant bytes      |
 
-### 1.12. Timestamp
+### 1.13. Timestamp
 
 Timestamp serialization is always of a constant size (8 bytes)
 
@@ -136,7 +145,7 @@ Timestamp serialization is always of a constant size (8 bytes)
 |----------------|----------------|------------------------------|
 | 0              |  8             | number of milliseconds since January 1, 1970, 00:00:00 GMT |
 
-### 1.13. List
+### 1.14. List
 
 List serialization is of variable size.
 
@@ -145,7 +154,7 @@ List serialization is of variable size.
 | 0              |  4                       | *len* = number of list elements |
 | 4              |  *sum(len(serialize_N))* | serialize_N(T) byte array       |
 
-### 1.14. Optional
+### 1.15. Optional
 
 Optional serialization is of variable size.
 
@@ -154,7 +163,7 @@ Optional serialization is of variable size.
 | 0              |  1                       | 0, if the value is not present, 1 otherwise |
 | 1              |  ?                       | For Optional[T], binary encoding of T |
 
-### 1.15. Enum
+### 1.16. Enum
 
 Enum serialization is always of a constant size (4 bytes).
 
@@ -162,7 +171,7 @@ Enum serialization is always of a constant size (4 bytes).
 |----------------|----------------|----------------------------|
 | 0              |  4             | ordinal (integer) value    |
 
-### 1.16. Map
+### 1.17. Map
 
 Map serialization is of variable size.
 
