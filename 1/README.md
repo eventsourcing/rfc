@@ -62,45 +62,51 @@ mirrors the definition of Java's BigDecimal.
 
 Default value: `0`
 
-### 1.6. Float
+### 1.6. BigInteger
 
-Default value: `0.0`
-
-### 1.7. Double
-
-Default value: `0.0`
-
-### 1.8. Byte
+BigDecimal is an arbitrary precision integer.
 
 Default value: `0`
 
-### 1.9. ByteArray
+### 1.7. Float
+
+Default value: `0.0`
+
+### 1.8. Double
+
+Default value: `0.0`
+
+### 1.9. Byte
+
+Default value: `0`
+
+### 1.10. ByteArray
 
 ByteArray is an array of bytes.
 
 Default value: empty array.
 
-### 1.10. String
+### 1.11. String
 
 UTF-8 string.
 
 Default value: empty string
 
-### 1.11. UUID
+### 1.12. UUID
 
 Default value: `00000000-0000-0000-0000-000000000000`
 
-### 1.12. Timestamp
+### 1.13. Timestamp
 
 Default value: January 1, 1970, 00:00:00 GMT
 
-### 1.13. List
+### 1.14. List
 
 List is a parametrized type and can take any other type as a parameter.
 
 Default value: empty list
 
-### 1.14. Optional
+### 1.15. Optional
 
 Optional is a type that signifies a value that might be either present or not.
 
@@ -108,21 +114,21 @@ Optional is a parametrized type and can take any other type as a parameter.
 
 Default value: value not present
 
-### 1.15. Enum
+### 1.16. Enum
 
 Enum represents a type with a closed set of possible ordinal (integer) values (for example, `OPEN = 0, CLOSED = 1`). The ordinal values MUST start with 0
 and form a consecutive sequence.
 
 Default value: smallest ordinal value (0).
 
-### 1.16. Map
+### 1.17. Map
 
 Map represents a collection of (key, value) pairs, such that each possible
 key appears at most once in the collection.
 
 Default value: an empty map.
 
-### 1.17. Object
+### 1.18. Object
 
 See [3. Object](../1/README.md#object) for the definition.
 
@@ -144,6 +150,7 @@ It is RECOMMENDED that a human readable, latin1 encoded name is specified for ty
 | Integer       | 0x496e7465676572              | Integer                       |
 | Long          | 0x4c6f6e67                    | Long                          |
 | BigDecimal    | 0x426967446563696d616c        | BigDecimal                    |
+| BigInteger    | 0x426967496e7465676572        | BigInteger                    |
 | Float         | 0x466c6f6174                  | Float                         |
 | Double        | 0x446f75626c65                | Double                        |
 | Byte          | 0x42797465                    | Byte                          |
